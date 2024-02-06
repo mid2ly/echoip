@@ -1,184 +1,87 @@
 <style>
-  html,
-  .pure-g [class*="pure-u"] {
-    background-color: white;
-    font-family: "Open Sans", sans-serif;
+  @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+  body, body * {
+    all: unset;
+    font-family: 'Source Code Pro', monospace;
   }
-  pre {
-    font-family: "Monaco", "Menlo", "Consolas", "Courier New", monospace;
-    white-space: pre-wrap; /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    word-wrap: break-word;
+
+  *::selection {
+    color: #008000;
+    background-color: rgba(255, 255, 255, 0.05);
   }
-  a {
-    /* background: #e3e3e3; */
-    text-decoration: underline;
-    color: #000;
+
+  *::-webkit-scrollbar {
+      width: 10px;  
   }
-  a:hover,
-  active {
-    background: #d7d7d7;
+
+  *::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.05);
   }
-  .ip {
-    border: 1px solid #cbcbcb;
-    background: #f2f2f2;
-    font-size: 36px;
-    padding: 6px;
-    word-wrap: break-word;
+
+  *::-webkit-scrollbar-track {
+      background: transparent;
   }
-  svg.github-corner {
-    fill: #151513;
-    color: #fff;
+
+  body {
+    background-color: #000000;
   }
-  .footer {
-    margin-top: 34px;
-    border-top: 1px solid #cbcbcb;
+
+  body, h1, h2, h3 {
+    margin: 0;
+  }
+
+  h2, h3 {
+    color: #424242;
   }
 
   .content {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-    max-width: 1024px;
-  }
-
-  .center {
+    top: calc(50% - 6.5vw);
+    position: absolute;
+    display: flex;
     justify-content: center;
-  }
-
-  .info-table td,
-  .info-table th {
-    padding: 5px;
-    border: 2px solid #ababab;
-    word-wrap: break-word;
-  }
-
-  .info-table th[scope="row"] {
-    background-color: #d5d5d5;
-    text-align: left;
-  }
-
-  .widgetbox {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid grey;
-    font-family: "Courier New", Courier, monospace;
-    margin-top: 0.5rem;
-    box-sizing: border-box;
   }
 
-  .widgetbox.input :first-child::before {
-    content: "$ ";
-    white-space: pre;
+  h1 {
+    font-size: 10vw;
+    color: #ffffff;
+    font-weight: bold;
   }
 
-  .widgetbox.output {
-    min-height: 4em;
-    white-space: pre;
-    overflow-x: scroll;
+  h1::before {
+    content: 'YOUR PUBLIC IP';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    color: #424242;
+    font-size: 2.5vw;
+    padding-bottom: 2.5vw;
   }
 
-  .l-box {
-    margin: 0 1rem;
+  h2 {
+    font-size: 2vw;
   }
 
-  .align-right {
-    text-align: right;
+  h3 {
+    font-size: 1.5vw;
   }
 
-  .medium-input {
-    width: 10em;
+  .attributes {
+    display: flex;
+    width: 90%;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
-  button.selected {
-    background-color: rgb(208 208 208);
-  }
-
-  .input-buttons {
-    line-height: 2.6em;
-    font-size: smaller;
-  }
-
-  /* POST CORRECTION */
-  .leafcloud-logo .letters {
-    fill: black;
-  }
-
-  /* DARK MODE OVERRIDES */
-  @media (prefers-color-scheme: dark) {
-    html,
-    .pure-g [class*="pure-u"],
-    a {
-      background-color: #161719;
-      color: #d8d9da;
-    }
-    .ip {
-      border: 1px solid #313233;
-      background: #212223;
-    }
-    .footer {
-      color: #8e8e8e !important;
-      border-top: 1px solid #313233;
-    }
-    a:hover,
-    active {
-      background: #3d3e3f;
-    }
-
-    svg.github-corner {
-      fill: #f8f9fa;
-      color: #161719;
-    }
-
-    .info-table th[scope="row"] {
-      background-color: #2e2e2e;
-      color: rgb(220, 220, 220);
-      text-align: left;
-    }
-
-    .pure-button {
-      background-color: #2e2e2e;
-      color: rgb(220, 220, 220);
-    }
-    .pure-button.selected {
-      background-color: rgb(125 125 125);
-    }
-
-    .pure-input {
-      background-color: #e6e6e6;
-      color: #666;
-    }
-
-    .pure-input::placeholder {
-      color: #bbb;
-    }
-
-    .leafcloud-logo .letters {
-      fill: white;
-      max-width: 100%;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .leafcloud-placement {
-      text-align: right;
-    }
-    .leafcloud-logo {
-      height: 80px;
-      margin: 2em 0 -0.5em 0;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .leafcloud-logo {
-      margin-right: 1em;
-    }
-  }
-
-  .debug {
-    outline: 1px dotted pink;
+  .attribute {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 </style>
